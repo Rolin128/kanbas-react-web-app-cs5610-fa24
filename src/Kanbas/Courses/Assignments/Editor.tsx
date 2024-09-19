@@ -8,7 +8,7 @@ export default function AssignmentEditor() {
             <textarea
                 id="wd-description"
 
-                style={{ width: '140%', height: '150px' }} // 也可以通过style属性来调整
+                style={{ width: '140%', height: '150px' }} 
             >
                 The assignment is available online Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kanbas application Links to all relevant source code repositories The Kanbas application should include a link to navigate back to the landing page.
             </textarea>
@@ -37,7 +37,6 @@ export default function AssignmentEditor() {
                     <td>
                         <select id="wd-group">
                             <option value="assignments">ASSIGNMENTS</option>
-                            {/* Add other groups if necessary */}
                         </select>
                     </td>
                 </tr>
@@ -68,7 +67,6 @@ export default function AssignmentEditor() {
                     <td>
                         <select id="wd-submission">
                             <option value="online">Online</option>
-                            {/* Add other submission types if necessary */}
                         </select>
 
                         <tr>

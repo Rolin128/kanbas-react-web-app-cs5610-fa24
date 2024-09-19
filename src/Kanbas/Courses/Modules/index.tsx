@@ -1,8 +1,6 @@
 export default function Modules() {
     return (
         <div>
-            {/* Implement Collapse All button, View Progress button, etc. */}
-
             <button id="wd-modules-collapse-all">Collapse All</button>
             <button id="wd-modules-view-progress">View Progress</button>
             <select id="wd-modules-public-all" >

@@ -1,3 +1,4 @@
+/*Name: Yuchen Li */
 import Lab1 from "./Lab1";
 import { Route, Routes, Navigate } from "react-router";
 import TOC from "./TOC";
@@ -14,6 +15,7 @@ export default function Labs() {
                 <Route path="Lab2" element={<Lab2 />} />
                 <Route path="Lab3" element={<Lab3 />} />
             </Routes>
+            < a id="wd-github" href="https://github.com/Rolin128/kanbas-react-web-app-cs5610-fa24"> github </a>
         </div>
     );
 }

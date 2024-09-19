@@ -275,7 +275,7 @@ _Starship-gap2.jpg"
                     Please
                     < a href="https://www.lipsum.com/banners/"> click here </a>
                     to navigate to another document<br />
-                    < a id="wd-github" href="https://github.com/Rolin128/kanbas-react-web-app-cs5610-fa24"> github </a>
+                    
                     <br />
                 </form>
             </div>
