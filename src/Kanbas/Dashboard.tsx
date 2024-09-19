@@ -13,12 +13,12 @@ export default function Dashboard() {
                             <h5>
                                 CS1234 React JS
                             </h5>
-                            <p className="wd-dashboard-course-title">
-                                Full Stack software developer
-                            </p>
-                            <button> Go </button>
                         </div>
                     </Link>
+                    <p className="wd-dashboard-course-title">
+                        Full Stack software developer
+                    </p>
+                    <a href="#/Kanbas/Courses/1234/Home"> Go </a>
                 </div>
                 <div className="wd-dashboard-course">
                     <Link className="wd-dashboard-course-link"
@@ -26,14 +26,14 @@ export default function Dashboard() {
                         <img src="/images/reactjs.jpg" width={200} />
                         <div>
                             <h5>
-                                CS5001 React JS
+                                CS5001 Intensive Foundations
                             </h5>
-                            <p className="wd-dashboard-course-title">
-                            Intensive Foundations of CS
-                            </p>
-                            <button> Go </button>
                         </div>
                     </Link>
+                    <p className="wd-dashboard-course-title">
+                        Intensive Foundations of CS
+                    </p>
+                    <a href="#/Kanbas/Courses/1234/Home"> Go </a>
                 </div>
                 <div className="wd-dashboard-course">
                     <Link className="wd-dashboard-course-link"
@@ -41,14 +41,14 @@ export default function Dashboard() {
                         <img src="/images/reactjs.jpg" width={200} />
                         <div>
                             <h5>
-                                CS5004 React JS
+                                CS5004 OOD
                             </h5>
-                            <p className="wd-dashboard-course-title">
-                            Object-Oriented Design
-                            </p>
-                            <button> Go </button>
                         </div>
                     </Link>
+                    <p className="wd-dashboard-course-title">
+                        Object-Oriented Design
+                    </p>
+                    <a href="#/Kanbas/Courses/1234/Home"> Go </a>
                 </div>
                 <div className="wd-dashboard-course">
                     <Link className="wd-dashboard-course-link"
@@ -56,14 +56,14 @@ export default function Dashboard() {
                         <img src="/images/reactjs.jpg" width={200} />
                         <div>
                             <h5>
-                                CS5008 React JS
+                                CS5008 Data Structure
                             </h5>
-                            <p className="wd-dashboard-course-title">
-                                Data Structure and Algorithm
-                            </p>
-                            <button> Go </button>
                         </div>
                     </Link>
+                    <p className="wd-dashboard-course-title">
+                        Data Structure and Algorithm
+                    </p>
+                    <a href="#/Kanbas/Courses/1234/Home"> Go </a>
                 </div>
                 <div className="wd-dashboard-course">
                     <Link className="wd-dashboard-course-link"
@@ -71,14 +71,14 @@ export default function Dashboard() {
                         <img src="/images/reactjs.jpg" width={200} />
                         <div>
                             <h5>
-                                CS5500 React JS
+                                CS5500 Software Engineering 
                             </h5>
-                            <p className="wd-dashboard-course-title">
-                                Found of Software Engineering
-                            </p>
-                            <button> Go </button>
                         </div>
                     </Link>
+                    <p className="wd-dashboard-course-title">
+                        Found of Software Engineering
+                    </p>
+                    <a href="#/Kanbas/Courses/1234/Home"> Go </a>
                 </div>
                 <div className="wd-dashboard-course">
                     <Link className="wd-dashboard-course-link"
@@ -86,14 +86,14 @@ export default function Dashboard() {
                         <img src="/images/reactjs.jpg" width={200} />
                         <div>
                             <h5>
-                                CS5800 React JS
+                                CS5800 Algorithm
                             </h5>
-                            <p className="wd-dashboard-course-title">
-                                Algorithm
-                            </p>
-                            <button> Go </button>
                         </div>
                     </Link>
+                    <p className="wd-dashboard-course-title">
+                        Algorithm
+                    </p>
+                    <a href="#/Kanbas/Courses/1234/Home"> Go </a>
                 </div>
                 <div className="wd-dashboard-course">
                     <Link className="wd-dashboard-course-link"
@@ -101,18 +101,18 @@ export default function Dashboard() {
                         <img src="/images/reactjs.jpg" width={200} />
                         <div>
                             <h5>
-                                CS5700 React JS
+                                CS5700 Computer Networks
                             </h5>
-                            <p className="wd-dashboard-course-title">
-                                Computer Networks
-                            </p>
-                            <button> Go </button>
                         </div>
                     </Link>
+                    <p className="wd-dashboard-course-title">
+                        Computer Networks
+                    </p>
+                    <a href="#/Kanbas/Courses/1234/Home"> Go </a>
                 </div>
-                <div className="wd-dashboard-course"> ... </div>
-                <div className="wd-dashboard-course"> ... </div>
+
+             
             </div>
-        </div>
+        </div >
     );
 }
