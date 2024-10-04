@@ -10,7 +10,7 @@ export default function Dashboard() {
                         <div className="card h-100 rounded-3 overflow-hidden">
                             <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                                 to="/Kanbas/Courses/1234/Home">
-                                <img src="/images/reactjs.jpg" width="100%" height={160} />
+                                <img src="/images/lessonA.jpg" width="100%" height={160} />
                                 <div className="card-body">
                                     <h5 className="wd-dashboard-course-title card-title text-primary">
                                         CS5450 12631 Web Development
@@ -29,7 +29,7 @@ export default function Dashboard() {
                         <div className="card h-100 rounded-3 overflow-hidden">
                             <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                                 to="/Kanbas/Courses/1234/Home">
-                                <img src="/images/reactjs.jpg" width="100%" height={160} />
+                                <img src="/images/lessonB.jpg" width="100%" height={160} />
                                 <div className="card-body">
                                     <h5 className="wd-dashboard-course-title card-title text-primary">
                                         CS5001 23145 Intensive Foundations 
@@ -48,7 +48,7 @@ export default function Dashboard() {
                         <div className="card h-100 rounded-3 overflow-hidden">
                             <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                                 to="/Kanbas/Courses/1234/Home">
-                                <img src="/images/reactjs.jpg" width="100%" height={160} />
+                                <img src="/images/lessonc.jpg" width="100%" height={160} />
                                 <div className="card-body">
                                     <h5 className="wd-dashboard-course-title card-title text-primary">
                                         CS5008 21342 Data Structure
@@ -69,7 +69,7 @@ export default function Dashboard() {
                         <div className="card h-100 rounded-3 overflow-hidden">
                             <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                                 to="/Kanbas/Courses/1234/Home">
-                                <img src="/images/reactjs.jpg" width="100%" height={160} />
+                                <img src="/images/lessond.jpg" width="100%" height={160} />
                                 <div className="card-body">
                                     <h5 className="wd-dashboard-course-title card-title text-primary">
                                         CS6140 126 Machine Learning
@@ -89,7 +89,7 @@ export default function Dashboard() {
                         <div className="card h-100 rounded-3 overflow-hidden">
                             <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                                 to="/Kanbas/Courses/1234/Home">
-                                <img src="/images/reactjs.jpg" width="100%" height={160} />
+                                <img src="/images/lessonf.jpg" width="100%" height={160} />
                                 <div className="card-body">
                                     <h5 className="wd-dashboard-course-title card-title text-primary">
                                         CS5500 13456 Software Engineering
@@ -109,7 +109,7 @@ export default function Dashboard() {
                         <div className="card h-100 rounded-3 overflow-hidden">
                             <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                                 to="/Kanbas/Courses/1234/Home">
-                                <img src="/images/reactjs.jpg" width="100%" height={160} />
+                                <img src="/images/lessonm.jpg" width="100%" height={160} />
                                 <div className="card-body">
                                     <h5 className="wd-dashboard-course-title card-title text-primary">
                                         CS4300 21345 Software Engineering
@@ -129,7 +129,7 @@ export default function Dashboard() {
                         <div className="card h-100 rounded-3 overflow-hidden">
                             <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                                 to="/Kanbas/Courses/1234/Home">
-                                <img src="/images/reactjs.jpg" width="100%" height={160} />
+                                <img src="/images/lessonB.jpg" width="100%" height={160} />
                                 <div className="card-body">
                                     <h5 className="wd-dashboard-course-title card-title text-primary">
                                         CS5800 15627 Algorithm 
@@ -149,7 +149,7 @@ export default function Dashboard() {
                         <div className="card h-100 rounded-3 overflow-hidden">
                             <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                                 to="/Kanbas/Courses/1234/Home">
-                                <img src="/images/reactjs.jpg" width="100%" height={160} />
+                                <img src="/images/lessonf.jpg" width="100%" height={160} />
                                 <div className="card-body">
                                     <h5 className="wd-dashboard-course-title card-title text-primary">
                                         CS5700 26173 Computer Networks 
