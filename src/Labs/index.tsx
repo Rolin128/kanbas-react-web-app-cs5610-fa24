@@ -16,7 +16,8 @@ export default function Labs() {
                 <Route path="/" element={<Navigate to="Lab1" />} />
                 <Route path="Lab1" element={<Lab1 />} />
                 <Route path="Lab2" element={<Lab2 />} />
-                <Route path="Lab3" element={<Lab3 />} />
+                <Route path="Lab3/*" element={<Lab3 />} /> 
+                {/* 添加"*"因为Labs will have its own routing */}
             </Routes>
         </div>
     );

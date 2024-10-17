@@ -1,10 +1,20 @@
+import React from 'react';
+import { useParams, Link } from "react-router-dom";
+import { assignments } from "../../Database";
+
 
 export default function AssignmentEditor() {
+    const { aid, cid} = useParams();
+    const assignment = assignments.find((assignment) => assignment._id === aid);
+    if (!assignment) {
+        return <div>Assignment not found</div>;
+      }
+    
     return (
         <div id="wd-assignments-editor" className="container mt-5">
             <div className="mb-4">
                 <label htmlFor="wd-assignment-name-o" className="form-label">Assignment Name</label>
-                <input id="wd-assignment-name-o" className="form-control" value="A1" />
+                <input id="wd-assignment-name-o" className="form-control" value={assignment && assignment.title}/>
             </div>
             <div className="mb-4">
                 <textarea id="wd-assignment-description" className="form-control"
@@ -31,7 +41,7 @@ The Kanbas application should include a link to navigate back to the landing pag
 
             <div className="row mb-3">
                 <div className="col-md-6">
-                    <label htmlFor="wd-points" className="form-label float-end">Points</label>
+                    <label htmlFor="wd-points" className="form-label float-md-end">Points</label>
                 </div>
                 <div className="col-md-6">
                     <input id="wd-points" className="form-control" value={100} />
@@ -40,7 +50,7 @@ The Kanbas application should include a link to navigate back to the landing pag
 
             <div className="row mb-3">
                 <div className="col-md-6">
-                    <label htmlFor="wd-assi-group" className="form-label float-end">Assignment Group</label>
+                    <label htmlFor="wd-assi-group" className="form-label float-md-end">Assignment Group</label>
                 </div>
                 <div className="col-md-6">
                     <select id="wd-assi-group" className="form-select">
@@ -51,9 +61,9 @@ The Kanbas application should include a link to navigate back to the landing pag
                 </div>
             </div>
 
-            <div className="row mb-3">
+            <div className="row mb-3 ">
                 <div className="col-md-6">
-                    <label htmlFor="wd-display-grade" className="form-label float-end">Display Grade as</label>
+                    <label htmlFor="wd-display-grade" className="form-label float-md-end">Display Grade as</label>
                 </div>
                 <div className="col-md-6">
                     <select id="wd-display-grade" className="form-select">
@@ -64,9 +74,9 @@ The Kanbas application should include a link to navigate back to the landing pag
                 </div>
             </div>
 
-            <div className="row mb-3">
+            <div className="row mb-3 ">
                 <div className="col-md-6">
-                    <label className="form-label float-end">Submission Type</label>
+                    <label className="form-label float-md-end">Submission Type</label>
                 </div>
                 <div className="col-md-6">
                     <div className="card">
@@ -105,9 +115,9 @@ The Kanbas application should include a link to navigate back to the landing pag
             </div>
 
 
-            <div className="row mb-3">
+            <div className="row mb-3 ">
                 <div className="col-md-6">
-                    <label className="form-label float-end">Assign</label>
+                    <label className="form-label float-md-end">Assign</label>
                 </div>
                 <div className="col-md-6">
                     <div className="card">
@@ -140,8 +150,14 @@ The Kanbas application should include a link to navigate back to the landing pag
                 <div className="col-md-3"></div>
                 <div className="col-md-9">
                     <div className="d-flex justify-content-end">
-                        <button className="btn btn-light me-2">Cancel</button>
-                        <button className="btn btn-danger">Save</button>
+                    <Link 
+                            to={`/Kanbas/Courses/${cid}/Assignments`} 
+                            className="btn btn-light me-2"
+                        >Cancel</Link>
+                    <Link 
+                            to={`/Kanbas/Courses/${cid}/Assignments`} 
+                            className="btn btn-light btn-danger me-2"
+                        >Save</Link>
                     </div>
                 </div>
             </div>

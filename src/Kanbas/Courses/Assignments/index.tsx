@@ -5,12 +5,16 @@ import AssiControlButtons from "./AssiControlButtons";
 import { PiNotebookLight } from "react-icons/pi";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import React from 'react';
+import { useParams } from "react-router";
+import * as db from "../../Database";
 
 import './SearchBar.css';
 import './Elips.css';
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 export default function Assignments() {
+    const { cid } = useParams();
+    const assignments = db.assignments;
     return (
         <div id="wd-assignments">
             <div>
@@ -30,109 +34,36 @@ export default function Assignments() {
                             </div>
                         </div>
                         <ul className="wd-lessons list-group rounded-0">
-                            <li className="wd-lesson list-group-item p-3 ps-1">
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="d-flex align-items-center">
-                                        <BsGripVertical className="me-2 fs-3 text-secondary" />
-                                        <PiNotebookLight className="me-2 fs-3 text-success" />
-                                        <div>
-                                            <NavLink to="/Kanbas/Courses/1234/Assignments/123"
-                                                className="text-decoration-none"
-                                                style={{ color: 'black' }}>
-                                                A1</NavLink>
-                                            <div className="text-secondary" style={{ fontSize: '0.8rem' }}>
-                                                <span style={{ color: 'red' }}>Multiple Modules</span> ｜Not available until May 6 at 12:00am | Due May 13 at 11:59pm | 100 pts
+                            {assignments
+                                .filter((assignment) => assignment.course === cid)
+                                .map((assignment) => (
+                                    <li key={assignment._id} className="wd-lesson list-group-item p-3 ps-1">
+                                        <div className="d-flex justify-content-between align-items-center">
+                                            <div className="d-flex align-items-center">
+                                                <BsGripVertical className="me-2 fs-3 text-secondary" />
+                                                <PiNotebookLight className="me-2 fs-3 text-success" />
+                                            
+                                                <div>
+                                                    <Link to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
+                                                        className="text-decoration-none"
+                                                        style={{ color: 'black' }}>
+                                                        {assignment.title}</Link>
+                                                    <div className="text-secondary" style={{ fontSize: '0.8rem' }}>
+                                                        <span style={{ color: 'red' }}>Multiple Modules</span> ｜Not available until May 6 at 12:00am | Due May 13 at 11:59pm | 100 pts
+                                                    </div>
+                                                </div>
+                                         
+                                            </div>
+                                            <div>
+                                                <AssiControlButtons />
                                             </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <AssiControlButtons />
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="wd-lesson list-group-item p-3 ps-1">
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="d-flex align-items-center">
-                                        <BsGripVertical className="me-2 fs-3 text-secondary" />
-                                        <PiNotebookLight className="me-2 fs-3 text-success" />
-                                        <div>
-                                            <NavLink to="/Kanbas/Courses/1234/Assignments/123"
-                                                className="text-decoration-none"
-                                                style={{ color: 'black' }}>
-                                                A2</NavLink>
-                                            <div className="text-secondary" style={{ fontSize: '0.8rem' }}>
-                                                <span style={{ color: 'red' }}>Multiple Modules</span> ｜Not available until May 13 at 12:00am | Due May 20 at 11:59pm | 100 pts
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <AssiControlButtons />
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="wd-lesson list-group-item p-3 ps-1">
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="d-flex align-items-center">
-                                        <BsGripVertical className="me-2 fs-3 text-secondary" />
-                                        <PiNotebookLight className="me-2 fs-3 text-success" />
-                                        <div>
-                                            <NavLink to="/Kanbas/Courses/1234/Assignments/123"
-                                                className="text-decoration-none"
-                                                style={{ color: 'black' }}>
-                                                A3</NavLink>
-                                            <div className="text-secondary" style={{ fontSize: '0.8rem' }}>
-                                                <span style={{ color: 'red' }}>Multiple Modules</span> ｜Not available until May 20 at 12:00am | Due May 27 at 11:59pm | 100 pts
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <AssiControlButtons />
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="wd-lesson list-group-item p-3 ps-1">
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="d-flex align-items-center">
-                                        <BsGripVertical className="me-2 fs-3 text-secondary" />
-                                        <PiNotebookLight className="me-2 fs-3 text-success" />
-                                        <div>
-                                            <NavLink to="/Kanbas/Courses/1234/Assignments/123"
-                                                className="text-decoration-none"
-                                                style={{ color: 'black' }}>
-                                                A4</NavLink>
-                                            <div className="text-secondary" style={{ fontSize: '0.8rem' }}>
-                                                <span style={{ color: 'red' }}>Multiple Modules</span> ｜Not available until May 27 at 12:00am | Due Jun 4 at 11:59pm | 100 pts
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <AssiControlButtons />
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="wd-lesson list-group-item p-3 ps-1">
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="d-flex align-items-center">
-                                        <BsGripVertical className="me-2 fs-3 text-secondary" />
-                                        <PiNotebookLight className="me-2 fs-3 text-success" />
-                                        <div>
-                                            <NavLink to="/Kanbas/Courses/1234/Assignments/123"
-                                                className="text-decoration-none"
-                                                style={{ color: 'black' }}>
-                                                A5</NavLink>
-                                            <div className="text-secondary" style={{ fontSize: '0.8rem' }}>
-                                                <span style={{ color: 'red' }}>Multiple Modules</span> ｜Not available until Jun 4 at 12:00am | Due Jun 11 at 11:59pm | 100 pts
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <AssiControlButtons />
-                                    </div>
-                                </div>
-                            </li>
+                                    </li>
+                                ))}
                         </ul>
                     </li>
-                </ul> </div>
+                </ul>
+            </div>
         </div>
     );
 }

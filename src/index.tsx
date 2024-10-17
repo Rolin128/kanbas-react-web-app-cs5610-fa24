@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
+import './index.css'; // lab3添加的
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import App from "./App";

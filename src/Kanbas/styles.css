@@ -24,6 +24,12 @@ body * {
     border-left: 3px solid black !important;
 }
 
+.wd-bli{
+    background-color:white;
+    color: black;
+    border-left: 3px solid black !important;
+}
+
 
 .wd-btn-secondary {
     --bs-btn-color: #000;
@@ -43,4 +49,6 @@ body * {
 .wd-lesson {
     border-left: 3px solid green !important;
 }
+
+
 

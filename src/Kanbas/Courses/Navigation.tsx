@@ -1,71 +1,49 @@
-import { Link } from "react-router-dom";
-import { NavLink } from 'react-router-dom';
+import { Link, useParams, useLocation } from "react-router-dom";
 export default function CoursesNavigation() {
+    const { cid } = useParams();
+    const { pathname } = useLocation();
+
+
+    const links = ["Home", "Modules", "Piazza", "Zoom", "Assignments", "Quizzes", "Grades", "People"];
     return (
-        <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0 " >
-            <NavLink
-                to="/Kanbas/Courses/1234/Home"
-                id="wd-course-home-link"
-                className={({ isActive }) =>
-                    `list-group-item border border-0 ${isActive ? 'active' : 'text-danger'}`
-                }
-            >
-                Home
-            </NavLink>
-            <NavLink
-                to="/Kanbas/Courses/1234/Modules"
-                id="wd-course-modules-link"
-                className={({ isActive }) =>
-                    `list-group-item border border-0 ${isActive ? 'active' : 'text-danger'}`
-                }
-            >
-                Modules
-            </NavLink>
-            <NavLink
-                to="/Kanbas/Courses/1234/Piazza"
-                id="wd-course-piazza-link"
-                className={({ isActive }) =>
-                    `list-group-item border border-0 ${isActive ? 'active' : 'text-danger'}`
-                }
-            >
-                Piazza
-            </NavLink>
-            <NavLink
-                to="/Kanbas/Courses/1234/Zoom"
-                id="wd-course-zoom-link"
-                className={({ isActive }) =>
-                    `list-group-item border border-0 ${isActive ? 'active' : 'text-danger'}`
-                }
-            >
-                Zoom
-            </NavLink>
-            <NavLink
-                to="/Kanbas/Courses/1234/Assignments"
-                id="wd-course-assignments-link"
-                className={({ isActive }) =>
-                    `list-group-item border border-0 ${isActive ? 'active' : 'text-danger'}`
-                }
-            >
-                Assignments
-            </NavLink>
-            <NavLink
-                to="/Kanbas/Courses/1234/Quizzes"
-                id="wd-course-quizzes-link"
-                className={({ isActive }) =>
-                    `list-group-item border border-0 ${isActive ? 'active' : 'text-danger'}`
-                }
-            >
-                Quizzes
-            </NavLink>
-            <NavLink
-                to="/Kanbas/Courses/1234/People"
-                id="wd-course-people-link"
-                className={({ isActive }) =>
-                    `list-group-item border border-0 ${isActive ? 'active' : 'text-danger'}`
-                }
-            >
-                People
-            </NavLink>
+        <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
+            {links.map((link) => (
+                <Link key={link} to={`/Kanbas/Courses/${cid}/${link}`} className={`list-group-item border border-0 
+                ${pathname.includes(link) ? "wd-bli" : "text-danger"}`}>{link}
+                </Link>
+            ))}
         </div>
     );
+
+
+
+
+
+
+
+
 }
+
+//method2
+// const { pathname } = useLocation();
+// const links = [
+//     { label: "Home", path: "Home" },
+//     { label: "Modules", path: "Modules" },
+//     { label: "Piazza", path: "Piazza" },
+//     { label: "Zoom", path: "Zoom" },
+//     { label: "Assignments", path: "Assignments" },
+//     { label: "Quizzes", path: "Quizzes" },
+//     { label: "Grades", path: "Grades" },
+//     { label: "People", path: "People" },
+// ];
+// return (
+//     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0 " >
+
+//         {links.map((link) => (
+//             <Link key={link.path} to={link.path} className={`list-group-item border border-0
+//             ${pathname.includes(link.label) ? "wd-bli" : "text-danger"}`}>{link.label}
+//             </Link>
+//         ))}
+
+//     </div>
+// );

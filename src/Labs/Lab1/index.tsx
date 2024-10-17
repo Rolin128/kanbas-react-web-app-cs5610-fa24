@@ -275,7 +275,7 @@ _Starship-gap2.jpg"
                     Please
                     < a href="https://www.lipsum.com/banners/"> click here </a>
                     to navigate to another document<br />
-                    
+
                     <br />
                 </form>
             </div>
