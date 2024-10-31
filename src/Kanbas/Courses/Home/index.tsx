@@ -10,8 +10,5 @@ export default function Home() {
                 <CourseStatus />
             </div>
         </div>
-
-
-
     );
 }

@@ -17,7 +17,6 @@
 .card-body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding: 1rem;
 }
 
@@ -39,19 +38,11 @@
     margin-bottom: 1rem;
 }
 
-.wd-btn-nd {
-    align-self: start;
-    background-color: #3b82f6; 
-    color: #ffffff;
-    border: none;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    border-radius: 0.45rem;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
+.button-group {
+    display: flex;
+    margin-top: auto;
 }
 
-.wd-btn-nd:hover {
-    background-color: #2563eb; 
-    text-decoration: none;
+.wd-faculty-left-margin {
+    margin-left: 10px; 
 }

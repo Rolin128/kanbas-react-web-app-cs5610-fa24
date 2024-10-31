@@ -2,17 +2,33 @@
     {
         "_id": "A101",
         "title": "Propulsion Assignment",
-        "course": "RS101"
+        "course": "RS101",
+        "description": "Description for Propulsion Assignment",
+        "points": 100,
+        "due": "2023-05-13",
+        "available": "2023-05-06",
+        "until": "2023-05-13"
     },
     {
         "_id": "A102",
         "title": "Combustion Analysis",
-        "course": "RS101"
+        "course": "RS101",
+        "description": "Description for Propulsion Assignment",
+        "points": 100,
+        "due": "2023-05-13",
+        "available": "2023-05-06",
+        "until": "2023-05-13"
+        
     },
     {
         "_id": "A103",
         "title": "Nozzle Design Project",
-        "course": "RS101"
+        "course": "RS101",
+        "description": "Description for Propulsion Assignment",
+        "points": 100,
+        "due": "2023-05-13",
+        "available": "2023-05-06",
+        "until": "2023-05-13"
     },
     {
         "_id": "A201",

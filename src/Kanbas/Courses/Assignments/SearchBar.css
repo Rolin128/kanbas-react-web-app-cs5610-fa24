@@ -12,6 +12,11 @@
     color: #888;
     margin-right: 5px;
   }
+
+  .trash-icon {
+    color: #d30909;
+    margin-right: 8px;
+  }
   
   .search-input {
     border: none;
