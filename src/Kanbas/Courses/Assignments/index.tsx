@@ -4,20 +4,16 @@ import { BsGripVertical } from "react-icons/bs";
 import AssiControlButtons from "./AssiControlButtons";
 import { PiNotebookLight } from "react-icons/pi";
 import { RiArrowDropDownFill } from "react-icons/ri";
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAssignment } from "./reducer";
-import ProtectedContent from '../../Account/ProtectedContent';
-
-
-
 import './SearchBar.css';
 import './Elips.css';
 
-import { Link, NavLink } from "react-router-dom";
+import { Link} from "react-router-dom";
 export default function Assignments() {
-    const { cid, aid } = useParams();
+    const { cid} = useParams();
     const { assignments } = useSelector((state: any) => state.assignmentsReducer);
     const cidAssignments = assignments.filter((assignment: any) => assignment.course === cid);
 
@@ -58,7 +54,7 @@ export default function Assignments() {
                                                         style={{ color: 'black' }}>
                                                         {assignments.title}</Link>
                                                     <div className="text-secondary" style={{ fontSize: '0.8rem' }}>
-                                                        <span style={{ color: 'red' }}>Multiple Modules</span> ｜<b>not available until</b> {assignments.available} | <b>Due</b> {assignments.due} | 100 pts
+                                                        <span style={{ color: 'red' }}>Multiple Modules</span> ｜<b>Not available until</b> {assignments.available} | <b>Due</b> {assignments.due} | 100 pts
                                                     </div>
                                                 </div>
 

@@ -1,5 +1,4 @@
-import { useLocation, useNavigate, useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAssignment } from "./reducer";
@@ -13,11 +12,8 @@ export default function AssignmentEditor() {
     const { cid, aid } = useParams<{ cid: string; aid: string }>();
     const { assignments } = useSelector((state: any) => state.assignmentsReducer);
 
-    // 使用 find 获取单个 assignment 对象
     const aidAssignment = assignments.find((assignment: any) => assignment._id === aid);
 
-
-    // name, description, points, due date, available from date, and available until date.
     const [assignment, setAssignment] = useState<any>(db.assignments);
 
     useEffect(() => {
@@ -42,8 +38,7 @@ export default function AssignmentEditor() {
     };
 
     const handleSave = () => {
-        if (!aidAssignment) return; // 防止 aidAssignment 未找到时执行
-        // 创建更新后的作业对象
+        if (!aidAssignment) return;
         const updatedAssignment = {
             ...aidAssignment,
             ...assignment,
@@ -207,7 +202,6 @@ export default function AssignmentEditor() {
                 </div>
             }
             studentContent={
-
                 <div id="wd-assignments-editor" className="container mt-5">
                     <div className="mb-4">
                         <label htmlFor="wd-assignment-name-o" className="form-label">Assignment Name</label>
