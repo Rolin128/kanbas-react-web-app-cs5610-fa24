@@ -15,7 +15,6 @@ import CounterRedux from "./ReduxExamples/CounterRedux";
 import AddRedux from "./ReduxExamples/AddRedux";
 import TodoList from "./ReduxExamples/todos/TodoList";
 
-
 export default function Lab4() {
 
     function sayHello() {
@@ -42,6 +41,7 @@ export default function Lab4() {
             <CounterRedux/>
             <AddRedux/>
             <TodoList/>
+        
         </div>
     )
 }

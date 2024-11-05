@@ -14,8 +14,8 @@ export default function TodoForm() {
                 }
             />
             <li className="todo-groups-item">
-                <button className="todo-button" onClick={() => dispatch(addTodo(todo))} id="wd-update-todo-click">Update</button>
-                <button className="todo-button" onClick={() => dispatch(updateTodo(todo))} id="wd-add-todo-click">Add</button>
+                <button className="todo-button" onClick={() => dispatch(updateTodo(todo))} id="wd-update-todo-click">Update</button>
+                <button className="todo-button" onClick={() => dispatch(addTodo(todo))} id="wd-add-todo-click">Add</button>
             </li>
         </li>
     );

@@ -16,7 +16,7 @@ const todosSlice = createSlice({
                 { ...action.payload, id: new Date().getTime().toString() },
             ];
             state.todos = newTodos;
-            state.todo = { title: "" };
+            state.todo = { title: "Add New Contents" };
         },
         deleteTodo: (state, action) => {
             const newTodos = state.todos.filter((todo) => todo.id !== action.payload);
