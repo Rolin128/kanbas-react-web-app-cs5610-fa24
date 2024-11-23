@@ -65,7 +65,7 @@ export default function Dashboard(
         try {
             await enrollmentClient.unenrollCourse(currentUser._id, courseId);
             const updatedCourses = await accountClient.findMyCourses();
-            // setLocalCourses(updatedCourses);
+            setLocalCourses(updatedCourses);
             setEnrolledCourses(updatedCourses);
             dispatch(unenrollCourse({ userId: currentUser._id, courseId }));
         } catch (error) {
