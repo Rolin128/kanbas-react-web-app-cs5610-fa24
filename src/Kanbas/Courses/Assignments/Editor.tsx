@@ -1,24 +1,35 @@
-import { useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateAssignment } from "./reducer";
-import * as db from "../../Database";
+import { addAssignment, updateAssignment, setAssignments } from "./reducer";
+import * as coursesClient from "../client";
+import * as assignmentsClient from "./client";
 import ProtectedContent from '../../Account/ProtectedContent';
 
 export default function AssignmentEditor() {
     const dispatch = useDispatch();
     const router = useNavigate();
-
     const { cid, aid } = useParams<{ cid: string; aid: string }>();
     const { assignments } = useSelector((state: any) => state.assignmentsReducer);
+    // const { pathname } = useLocation();
 
     const aidAssignment = assignments.find((assignment: any) => assignment._id === aid);
 
-    const [assignment, setAssignment] = useState<any>(db.assignments);
+    const [assignment, setAssignment] = useState<any>({
+        course: cid,
+        title: 'Default',
+        description: '',
+        points: 100,
+        due: '',
+        available: '',
+        until: '',
+        _id: ''
+    });
 
     useEffect(() => {
         if (aidAssignment) {
             setAssignment({
+                ...aidAssignment,
                 title: aidAssignment.title || "",
                 description: aidAssignment.description || "",
                 points: aidAssignment.points || 0,
@@ -29,6 +40,15 @@ export default function AssignmentEditor() {
         }
     }, [aidAssignment]);
 
+    const fetchAssignments = async () => {
+        const assignments = await coursesClient.findAssignmentsForCourse(cid as string);
+        dispatch(setAssignments(assignments));
+    };
+
+    useEffect(() => {
+        fetchAssignments();
+    }, []);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setAssignment((prev: any) => ({
@@ -37,18 +57,29 @@ export default function AssignmentEditor() {
         }));
     };
 
+    const createAssignment = async (assignment: any) => {
+        if (!cid) return;
+        const newAssignment = await coursesClient.createAssignmentForCourse(cid as string, assignment);
+        dispatch(addAssignment(newAssignment));
+    };
+
+    const saveAssignment = async (assignment: any) => {
+        await assignmentsClient.updateAssignment(assignment);
+        dispatch(updateAssignment(assignment));
+    };
+
     const handleSave = () => {
-        if (!aidAssignment) return;
-        const updatedAssignment = {
-            ...aidAssignment,
-            ...assignment,
-        };
-        dispatch(updateAssignment(updatedAssignment));
-        router(`/Kanbas/Courses/${cid}/Assignments`);
+        if (assignment._id === aid) {
+            saveAssignment(assignment);
+            router(`/Kanbas/Courses/${cid}/assignments`);
+        } else {
+            createAssignment({ ...assignment, _id: new Date().getTime().toString() });
+            router(`/Kanbas/Courses/${cid}/assignments`);
+        }
     };
 
     const handleCancel = () => {
-        router(`/Kanbas/Courses/${cid}/Assignments`);
+        router(`/Kanbas/Courses/${cid}/assignments`);
     };
 
     return (
@@ -61,10 +92,7 @@ export default function AssignmentEditor() {
                     </div>
                     <div className="mb-4">
                         <textarea id="wd-assignment-description" className="form-control" rows={10} cols={60}
-                            style={{
-                                height: '400px'
-                            }} onChange={handleChange} name="description" value={assignment.description}>
-
+                            style={{ height: '400px' }} onChange={handleChange} name="description" value={assignment.description}>
                         </textarea>
                     </div>
 
@@ -73,8 +101,7 @@ export default function AssignmentEditor() {
                             <label htmlFor="wd-points" className="form-label float-md-end">Points</label>
                         </div>
                         <div className="col-md-6">
-                            <input id="wd-points" className="form-control" onChange={handleChange} name="points"
-                                value={assignment.points} />
+                            <input id="wd-points" className="form-control" onChange={handleChange} name="points" value={assignment.points} />
                         </div>
                     </div>
 
@@ -144,7 +171,6 @@ export default function AssignmentEditor() {
                         </div>
                     </div>
 
-
                     <div className="row mb-3 ">
                         <div className="col-md-6">
                             <label className="form-label float-md-end">Assign</label>
@@ -169,8 +195,7 @@ export default function AssignmentEditor() {
                                         </div>
                                         <div className="col-md-6 mb-3">
                                             <label htmlFor="wd-until" className="form-label fw-bold">Until</label>
-                                            <input type="date" id="wd-until" className="form-control" name="until" value={assignment.until}
-                                                onChange={handleChange} />
+                                            <input type="date" id="wd-until" className="form-control" value={assignment.until} name="until" onChange={handleChange} />
                                         </div>
                                     </div>
                                 </div>
@@ -198,7 +223,6 @@ export default function AssignmentEditor() {
                             </div>
                         </div>
                     </div>
-
                 </div>
             }
             studentContent={
@@ -209,9 +233,7 @@ export default function AssignmentEditor() {
                     </div>
                     <div className="mb-4">
                         <textarea id="wd-assignment-description" className="form-control" rows={10} cols={60}
-                            style={{
-                                height: '400px'
-                            }} name="description" value={assignment.description} readOnly>
+                            style={{ height: '400px' }} name="description" value={assignment.description} readOnly>
                         </textarea>
                     </div>
 
@@ -255,5 +277,3 @@ export default function AssignmentEditor() {
         />
     );
 }
-
-

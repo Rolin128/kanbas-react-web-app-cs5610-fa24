@@ -5,19 +5,36 @@ import AssiControlButtons from "./AssiControlButtons";
 import { PiNotebookLight } from "react-icons/pi";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import React from 'react';
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAssignment } from "./reducer";
+import { deleteAssignment, setAssignments } from "./reducer";
 import './SearchBar.css';
 import './Elips.css';
+import * as coursesClient from "../client";
+import * as assignmentsClient from "./client";
 
-import { Link} from "react-router-dom";
+
+import { Link } from "react-router-dom";
 export default function Assignments() {
-    const { cid} = useParams();
+    const { cid } = useParams();
     const { assignments } = useSelector((state: any) => state.assignmentsReducer);
-    const cidAssignments = assignments.filter((assignment: any) => assignment.course === cid);
+    // const cidAssignments = assignments.filter((assignment: any) => assignment.course === cid);
 
     const dispatch = useDispatch();
+    const fetchAssignments = async () => {
+        const assignments = await coursesClient.findAssignmentsForCourse(
+            cid as string
+        );
+        dispatch(setAssignments(assignments));
+    };
+    useEffect(() => {
+        fetchAssignments();
+    }, []);
+    const removeAssignment = async (aid: string) => {
+        await assignmentsClient.deleteAssignment(aid);
+        dispatch(deleteAssignment(aid));
+    };
 
     return (
         <div id="wd-assignments">
@@ -40,34 +57,33 @@ export default function Assignments() {
                             </div>
                         </div>
                         <ul className="wd-lessons list-group rounded-0">
-                            {cidAssignments
-                                .filter((assignments: any) => assignments.course === cid)
-                                .map((assignments: any) => (
-                                    <li key={assignments._id} className="wd-lesson list-group-item p-3 ps-1">
-                                        <div className="d-flex justify-content-between align-items-center">
-                                            <div className="d-flex align-items-center">
-                                                <BsGripVertical className="me-2 fs-3 text-secondary" />
-                                                <PiNotebookLight className="me-2 fs-3 text-success" />
-                                                <div>
-                                                    <Link to={`/Kanbas/Courses/${cid}/Assignments/${assignments._id}`}
-                                                        className="text-decoration-none"
-                                                        style={{ color: 'black' }}>
-                                                        {assignments.title}</Link>
-                                                    <div className="text-secondary" style={{ fontSize: '0.8rem' }}>
-                                                        <span style={{ color: 'red' }}>Multiple Modules</span> ｜<b>Not available until</b> {assignments.available} | <b>Due</b> {assignments.due} | 100 pts
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                            {assignments.map((assignments: any) => (
+                                <li key={assignments._id} className="wd-lesson list-group-item p-3 ps-1">
+                                    {/* 虽然在你当前的代码中，移除key属性后可能暂时看不到明显的区别，但建议始终为动态生成的列表项添加唯一的key属性。 */}
+                                    <div className="d-flex justify-content-between align-items-center">
+                                        <div className="d-flex align-items-center">
+                                            <BsGripVertical className="me-2 fs-3 text-secondary" />
+                                            <PiNotebookLight className="me-2 fs-3 text-success" />
                                             <div>
-                                                <AssiControlButtons assignmentId={assignments._id}
-                                                    deleteAssignment={(assignmentId) => {
-                                                        dispatch(deleteAssignment(assignmentId));
-                                                    }} />
+                                                <Link to={`/Kanbas/Courses/${cid}/assignments/${assignments._id}`}
+                                                    className="text-decoration-none"
+                                                    style={{ color: 'black' }}>
+                                                    {assignments.title}</Link>
+                                                <div className="text-secondary" style={{ fontSize: '0.8rem' }}>
+                                                    <span style={{ color: 'red' }}>Multiple Modules</span> ｜<b>Not available until</b> {assignments.available} | <b>Due</b> {assignments.due} | 100 pts
+                                                </div>
                                             </div>
+
                                         </div>
-                                    </li>
-                                ))}
+                                        <div>
+                                            <AssiControlButtons assignmentId={assignments._id}
+                                                deleteAssignment={(assignmentId) => 
+                                                    removeAssignment(assignmentId)
+                                                } />
+                                        </div>
+                                    </div>
+                                </li>
+                            ))}
                         </ul>
                     </li>
                 </ul>

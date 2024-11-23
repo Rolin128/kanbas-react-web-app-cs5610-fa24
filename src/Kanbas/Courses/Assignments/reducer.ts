@@ -1,14 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { assignments } from "../../Database";
+// import { assignments } from "../../Database";
 
 const initialState = {
-    assignments: assignments,
+    assignments: [], //clear assignments state vairable 
 };
 
 const assignmentsSlice = createSlice({
     name: "assignments",
     initialState,
     reducers: {
+        setAssignments: (state, action) => {      //setAssignments用于更新Redux store中的assignments状态
+            state.assignments = action.payload;
+        },
         addAssignment: (state, { payload: assignment }) => {
             const newItem: any = {
                 _id: new Date().getTime().toString(),
@@ -38,5 +41,5 @@ const assignmentsSlice = createSlice({
     },
 });
 
-export const { addAssignment, deleteAssignment, updateAssignment, editAssignment } = assignmentsSlice.actions;
+export const { addAssignment, deleteAssignment, updateAssignment, editAssignment,setAssignments } = assignmentsSlice.actions;
 export default assignmentsSlice.reducer;
