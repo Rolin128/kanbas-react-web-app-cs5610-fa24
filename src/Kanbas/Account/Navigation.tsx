@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import { useSelector } from "react-redux";
 export default function SignNavigation() {
     const { currentUser } = useSelector((state: any) => state.accountReducer);
@@ -14,6 +14,14 @@ export default function SignNavigation() {
             >
                 Signin
             </NavLink>
+            {currentUser && currentUser.role === "ADMIN"  &&(
+                <NavLink to="/Kanbas/Account/Users"
+                className={({ isActive }) =>
+                    `list-group-item border border-0 ${isActive ? 'active' : 'text-danger'}`
+                }
+                >
+                Users 
+            </NavLink> )}
 
             <NavLink
                 to="/Kanbas/Account/Signup"
