@@ -36,7 +36,7 @@ export const createUser = async (user: any) => {
     return response.data;
 };
 export const profile = async () => {
-    const response = await axiosWithCredentials.post(`${USERS_API}/profile`);//retrieve the account information from the server route
+    const response = await axiosWithCredentials.post(`${USERS_API}/profile`);//retrieve the account information from the server route.
     return response.data;
 };
 export const signout = async () => {
