@@ -53,10 +53,7 @@ export default function Modules() {
                 <ProtectedContent
                     facultyContent={<div>
                         <ModulesControls setModuleName={setModuleName} moduleName={moduleName} addModule={createModuleForCourse} />
-
                     </div>}
-            
-
                     studentContent={undefined} 
                     />
                     <br /><br />
