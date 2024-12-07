@@ -23,16 +23,26 @@ export default function PeopleDetails() {
         if (!uid) return;
         const user = await client.findUserById(uid);
         setUser(user);
+        setName(`${user.firstName} ${user.lastName}`);
+        setEmail(user.email);
+        setRole(user.role);
     };
     const saveUser = async () => {
         const [firstName, lastName] = name.split(" ");
-        const updatedUser = { ...user, firstName, lastName, email, role };
+        const updatedUser = {
+            ...user,
+            ...(editingname ? { firstName, lastName } : {}),
+            ...(editingemail ? { email } : {}),
+            ...(editingrole ? { role } : {})
+        };
+        //updatedUser对象就是请求体。它包含了用户的更新信息，例如firstName、lastName、email和role等。
         await client.updateUser(updatedUser);
         setUser(updatedUser);
         seteditingName(false);
         seteditingEmail(false);
         seteditingRole(false);
-        navigate(-1);
+        navigate(0);
+        // navigate(-1);
     };
     useEffect(() => {
         if (uid) fetchUser();

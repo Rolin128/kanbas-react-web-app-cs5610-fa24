@@ -7,6 +7,8 @@ import * as assignmentsClient from "./client";
 import ProtectedContent from '../../Account/ProtectedContent';
 
 export default function AssignmentEditor() {
+
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const router = useNavigate();
     const { cid, aid } = useParams<{ cid: string; aid: string }>();
@@ -61,6 +63,7 @@ export default function AssignmentEditor() {
         if (!cid) return;
         const newAssignment = await coursesClient.createAssignmentForCourse(cid as string, assignment);
         dispatch(addAssignment(newAssignment));
+        navigate(0);
     };
 
     const saveAssignment = async (assignment: any) => {
